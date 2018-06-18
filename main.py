@@ -1,4 +1,5 @@
-import graphAsMatrix as g
+import adjList as g
+# import adjMatrix as g
 
 def split(str):
   return str.split("\t")
