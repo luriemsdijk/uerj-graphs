@@ -67,12 +67,9 @@ class LinkedList:
       while True:
         if(current == None):
           return False
-        print("current: ", current, current.next, value )
         if(current.value == value):
-          print("achou", current)
           return True
         if(current.next == None):
-          print("sem next", current)
           return False
         current = current.next
 

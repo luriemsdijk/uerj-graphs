@@ -6,10 +6,16 @@ class Graph:
       for v in vertices:
         self.AddV(v)
 
-  def getVertice(self,vertex):
+  def getVertice(self,vName):
     for v in self.list:
-      if(v.name == vertex):
+      if(v.name == vName):
         return v
+
+  def exists(self, vName):
+    for v in self.list:
+      if(v.name == vName):
+        return True
+    return False
 
   def getInOrder(self, v1Name, v2Name):
     v1 = v1Name
@@ -25,21 +31,23 @@ class Graph:
 
   def RemoveV(self, v1):
     for v in self.list:
-        v.remove(v1)
         if(v.name == v1):
           self.list.remove(v)
+          continue
+        v.remove(v1)
 
   def printMe(self):
     for v in self.list:
-        print("printMe",v.name,v)
+        print("printMe: ",v.name,v)
 
   def AddE(self, v1, v2):
     vertices = self.getInOrder(v1,v2)
-# Verificar existencia
-    if(self.getVertice(vertices[0]) == None):
-      self.AddV(vertices[0])
-    print("addE args: ", v1, v2)
-    print("addE",self.getVertice(vertices[0]))
+    if (not self.exists(v1) ):
+      self.AddV(v1)
+
+    if (not self.exists(v2) ):
+      self.AddV(v2)
+
     self.getVertice(vertices[0]).insert(vertices[1])
 
   def RemoveE(self, v1, v2):
@@ -55,17 +63,3 @@ class Graph:
         if(v.contains(vertex)):
           neighbors.append(v.name)
     return neighbors
-
-g = Graph()
-
-g.AddV('a')
-g.AddV('b')
-g.AddV('c')
-
-g.AddE('a','b')
-g.AddE('b','c')
-g.AddE('a','c')
-
-
-g.printMe()
-print("neighbors ", g.getNeighborhood('a'))
