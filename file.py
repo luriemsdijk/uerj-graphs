@@ -1,8 +1,8 @@
-# import adjList as g
-import adjMatrix as g
+from adjList import *
+# from adjMatrix import *
 
 
-def testFile():
+def getFile():
   def split(str):
     return str.split("\t")
   file  = open("graph.txt","r")
@@ -11,7 +11,7 @@ def testFile():
 
   print(lines)
 
-  myGraph = g.Graph()
+  myGraph = Graph()
 
   for i in range(lines):
     vertices = split(file.readline().rstrip())
@@ -27,8 +27,11 @@ def testFile():
   print("neigh 4: ", myGraph.getNeighborhood('4'))
   print("neigh 5: ", myGraph.getNeighborhood('5'))
 
+  return myGraph
+
+
 def testCode():
-  myGraph = g.Graph()
+  myGraph = Graph()
 
   myGraph.AddV('a')
   myGraph.AddV('b')
@@ -51,4 +54,4 @@ def testCode():
   print("neighbors c: ", myGraph.getNeighborhood('c'))
   print("neighbors d: ", myGraph.getNeighborhood('d'))
 
-testFile()
+# testFile()

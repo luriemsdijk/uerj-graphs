@@ -1,8 +1,10 @@
 from node import *
+from typing import List
 
 class Graph:
-  def __init__(self, vertices = []):
-      self.list = []
+  def __init__(self: 'Graph', vertices: List[str] = []):
+      self.list: List[Node] = []
+      self.vNames: List[str] = []
       for v in vertices:
         self.AddV(v)
 
@@ -17,6 +19,16 @@ class Graph:
         return True
     return False
 
+  def listVertices(self: 'Graph') -> List[str]:
+    return self.vNames
+
+  def listEdges(self: 'Graph'):
+    edges = []
+    for index,linked in enumerate(self.list):
+      for incident in linked.getList():
+        edges.append(f'{self.vNames[index]}-{incident}')
+    return edges
+
   def getInOrder(self, v1Name, v2Name):
     v1 = v1Name
     v2 = v2Name
@@ -26,17 +38,19 @@ class Graph:
 
     return [first,second]
 
-  def AddV(self, v1):
+  def AddV(self, v1: str):
+    self.vNames.append(v1)
     self.list.append(LinkedList(v1))
 
   def RemoveV(self, v1):
+    self.vNames.remove(v1)
     for v in self.list:
         if(v.name == v1):
           self.list.remove(v)
           continue
         v.remove(v1)
 
-  def printMe(self):
+  def printMe(self: 'Graph'):
     for v in self.list:
         print("printMe: ",v.name,v)
 

@@ -10,6 +10,17 @@ class Graph:
       return self.vertices[i]
     return -1
 
+  def listVertices(self: 'Graph'):
+    return self.vertices
+
+  def listEdges(self: 'Graph'):
+    edges = []
+    for (rIndex, row) in enumerate(self.matrix):
+      for (cIndex, col) in enumerate(row):
+        if(col == 1):
+          edges.append(f'{rIndex}-{cIndex}')
+    return edges
+
   def getIndexesAndOrder(self, v1Name, v2Name):
     v1 = self.vertices.index(v1Name)
     v2 = self.vertices.index(v2Name)
@@ -39,7 +50,7 @@ class Graph:
     self.n -= 1
     return True
 
-  def printMe(self):
+  def printMe(self: 'Graph'):
     if(len(self.matrix)):
       for v in self.vertices:
         index = int(v)-1

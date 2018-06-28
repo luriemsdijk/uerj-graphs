@@ -3,7 +3,7 @@ class Node:
         self.value = value
         self.next = next
 
-    def __str__(self):
+    def __str__(self: 'Node'):
         return 'Node ['+str(self.value)+']'
 
 
@@ -25,7 +25,7 @@ class LinkedList:
             self.last.next = current
             self.last = current
 
-    def __str__(self):
+    def __str__(self: 'Node'):
         if self.first != None:
             current = self.first
             out = 'LinkedList [' + str(current.value) + ','
@@ -35,7 +35,7 @@ class LinkedList:
             return out + ']'
         return 'LinkedList []'
 
-    def clear(self):
+    def clear(self: 'Node'):
         self.__init__()
 
     def remove(self, value):
@@ -52,8 +52,12 @@ class LinkedList:
           return current.value
       return False
 
-    def getList(self):
+    def getList(self: 'Node'):
       return self.listMe(self.first, [])
+
+    # def getAll(self: 'Node'):
+    #   objs = []
+
 
     def listMe(self, node, l):
       if(node == None):
