@@ -1,11 +1,11 @@
 from adjList import *
 # from adjMatrix import *
 
-
+filePath = "../graph.txt"
 def getFile():
   def split(str):
     return str.split("\t")
-  file  = open("graph.txt","r")
+  file  = open(filePath,"r")
 
   lines = int(split(file.readline())[1])
 
@@ -29,6 +29,21 @@ def getFile():
 
   return myGraph
 
+def readGraph() -> Graph:
+  def split(str):
+    return str.split("\t")
+  file  = open(filePath,"r")
+
+  lines = int(split(file.readline())[1])
+
+  myGraph = Graph()
+
+  for i in range(lines):
+    vertices = split(file.readline().rstrip())
+    myGraph.AddE(vertices[0],vertices[1])
+
+  return myGraph
+
 
 def testCode():
   myGraph = Graph()
@@ -42,8 +57,6 @@ def testCode():
   myGraph.AddE('b','c')
   myGraph.AddE('c','d')
   myGraph.AddE('d','a')
-
-
 
   # myGraph.RemoveV('c')
   # myGraph.AddE('b','c')

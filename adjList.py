@@ -26,7 +26,8 @@ class Graph:
     edges = []
     for index,linked in enumerate(self.list):
       for incident in linked.getList():
-        edges.append(f'{self.vNames[index]}-{incident}')
+        # edges.append(f'{self.vNames[index]}-{incident}')
+        edges.append([self.vNames[index],incident])
     return edges
 
   def getInOrder(self, v1Name, v2Name):
