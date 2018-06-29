@@ -32,14 +32,20 @@ def getFile():
 def readGraph() -> Graph:
   def split(str):
     return str.split("\t")
+
   file  = open(filePath,"r")
 
+  # pulando primeira linha
   lines = int(split(file.readline())[1])
 
   myGraph = Graph()
 
-  for i in range(lines):
-    vertices = split(file.readline().rstrip())
+  while(True):
+  # for i in range(10):
+    line = file.readline()
+    if(line == ''): break
+    print(line)
+    vertices = split(line.rstrip())
     myGraph.AddE(vertices[0],vertices[1])
 
   return myGraph

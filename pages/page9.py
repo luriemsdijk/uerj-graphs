@@ -6,9 +6,17 @@
 # #   retornar V
 
 # from file import *
+from importer import *
+from page5 import Busca
+
+def EhConexo(g: Graph) -> bool:
+  info = Busca(g)
+  for v in g.listVertices():
+    if not info.visitados[v]:
+      return False
+  return True
+
+print("ehConexo: ", EhConexo(readGraph()))
 
 
-# def EhConexo(g: Graph) -> bool:
-#   for v in g.listVertices():
-
-# print(EhConexo(readGraph()))
+# Nao consigo colocar outros vértices

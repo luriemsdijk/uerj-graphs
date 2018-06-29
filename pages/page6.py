@@ -1,5 +1,4 @@
-# from '../file' import *
-# from graphInfo import *
+
 from importer import *
 
 # procedimento BuscaCompleta(G: Grafo):

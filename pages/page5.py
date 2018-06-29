@@ -1,6 +1,4 @@
-from file import *
-
-from graphInfo import *
+from importer import *
 
 # procedimento Busca(G: Grafo):
 # rotular (V(G), Visitado: Lógico)
@@ -37,9 +35,6 @@ def Busca2(g: Graph, r: str, info: GraphInfo):
       if not info.visitados[w]:
         info.visitados[w], info.descobertos[makeE(v,w)] = True, True
   return info
-
-def makeE(v,w) -> str:
-  return f'{v}-{w}'
 
 
 print(g.listVertices())
