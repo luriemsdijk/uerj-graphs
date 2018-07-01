@@ -7,7 +7,6 @@
 
 # from file import *
 from importer import *
-from page5 import Busca
 
 def EhConexo(g: Graph) -> bool:
   info = Busca(g)
@@ -15,8 +14,3 @@ def EhConexo(g: Graph) -> bool:
     if not info.visitados[v]:
       return False
   return True
-
-print("ehConexo: ", EhConexo(readGraph()))
-
-
-# Nao consigo colocar outros vértices

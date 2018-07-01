@@ -1,9 +1,12 @@
 from node import *
 from typing import List
+from misc import EKey
+
+print("Adjecency as List")
 
 class Graph:
   def __init__(self: 'Graph', vertices: List[str] = []):
-      self.list: List[Node] = []
+      self.list: List[LinkedList] = []
       self.vNames: List[str] = []
       for v in vertices:
         self.AddV(v)
@@ -56,20 +59,20 @@ class Graph:
         print("printMe: ",v.name,v)
 
   def AddE(self, v1, v2):
-    vertices = self.getInOrder(v1,v2)
+    v1,v2 = self.getInOrder(v1,v2)
     if (not self.exists(v1) ):
       self.AddV(v1)
 
     if (not self.exists(v2) ):
       self.AddV(v2)
 
-    self.getVertice(vertices[0]).insert(vertices[1])
+    self.getVertice(v1).insert(v2)
 
   def RemoveE(self, v1, v2):
     vertices = self.getInOrder(v1,v2)
     vertices[0].remove(vertices[1])
 
-  def getNeighborhood(self, vertex):
+  def getNeighborhood(self: 'Graph', vertex:str, excpt: str = '') -> str:
     neighbors = []
     for v in self.list:
       if(v.name == vertex):
@@ -77,4 +80,11 @@ class Graph:
       else:
         if(v.contains(vertex)):
           neighbors.append(v.name)
-    return neighbors
+    if excpt in neighbors: neighbors.remove(excpt)
+    return neighbors if neighbors else ['0']
+
+  def __str__(self: 'Graph'):
+    out:str = "Vertices: " + sorted(self.listVertices(),key=str.lower).__str__()
+    out += "\n"
+    out += "Arestas:" + sorted({ EKey(v,w) for v,w in self.listEdges()},key=str.lower).__str__()
+    return out

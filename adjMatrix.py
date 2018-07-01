@@ -1,6 +1,9 @@
 import numpy as np
+from typing import List
+
+print("Adjecency as Matrix")
 class Graph:
-  def __init__(self, vertices = []):
+  def __init__(self, vertices: List[str] = []):
     self.n = len(vertices)
     self.vertices = vertices
     self.matrix = np.zeros((self.n,self.n))
@@ -74,9 +77,9 @@ class Graph:
     vertices = self.getIndexesAndOrder(v1,v2)
     self.matrix[vertices[0]][vertices[1]] = 0
 
-  def getNeighborhood(self, v):
-    if( v not in self.vertices):
-      return False
+  def getNeighborhood(self: 'Graph', vertex:str, excpt: str = '') -> List[str]:
+    if( vertex not in self.vertices):
+      return []
     vIndex = self.vertices.index(v)
     neighbors = []
     for i in range(vIndex,self.n):
@@ -86,4 +89,11 @@ class Graph:
     for i in range(vIndex,-1,-1):
       if(self.matrix[i][vIndex] == 1):
         neighbors.append(self.getVertice(i))
-    return neighbors
+    if excpt in neighbors: neighbors.remove(excpt)
+    return neighbors if neighbors else ['0']
+
+  def __str__(self: 'Graph'):
+    out:str = "Vertices: " + self.listVertices().__str__()
+    out += "\n"
+    out += "Arestas:" + { EKey(v,w) for v,w in self.listEdges()}.__str__()
+    return out
