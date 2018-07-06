@@ -1,3 +1,4 @@
+from importer import *
 import numpy as np
 from typing import List
 
@@ -21,8 +22,7 @@ class Graph:
     for (rIndex, row) in enumerate(self.matrix):
       for (cIndex, col) in enumerate(row):
         if(col == 1):
-        #   edges.append(f'{rIndex}-{cIndex}')
-          edges.append([rIndex,cIndex])
+          edges.append([self.vertices[rIndex],self.vertices[cIndex]])
     return edges
 
   def getIndexesAndOrder(self, v1Name, v2Name):
@@ -80,7 +80,7 @@ class Graph:
   def getNeighborhood(self: 'Graph', vertex:str, excpt: str = '') -> List[str]:
     if( vertex not in self.vertices):
       return []
-    vIndex = self.vertices.index(v)
+    vIndex = self.vertices.index(vertex)
     neighbors = []
     for i in range(vIndex,self.n):
       if(self.matrix[vIndex][i] == 1):

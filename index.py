@@ -1,7 +1,6 @@
 # testa os algoritmos implementados
 
 from importer import *
-from adjList import *
 from copy import copy
 
 g = readGraph()

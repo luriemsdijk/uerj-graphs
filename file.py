@@ -1,5 +1,4 @@
-from adjList import *
-# from adjMatrix import *
+from importer import *
 
 filePath = "c:/Users/junde/Documents/UERJ/uerj-graphs/graph.txt"
 

@@ -2,10 +2,13 @@ import os,sys,inspect
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 parent_dir = os.path.dirname(current_dir)
 sys.path.insert(0, parent_dir)
+
+from misc import *
+from adjList import *
+
 from file import *
 from graphInfo import *
 from node import *
-from misc import *
 from queue import *
 
 from pages.buscaCore import *
@@ -21,5 +24,3 @@ from pages.page26 import BuscaProfundidadeI
 from pages.page27 import BuscaProfundidadeR
 from pages.page57 import BuscaLargura
 from pages.page62 import DeterminarDistancias
-
-print("de fora")
